@@ -1,0 +1,7 @@
+<mapper namespace="pro.fengjian.dao.UserMapper">
+
+    <select id="selectOne" parameterType="pro.fengjian.pojo.User" resultType="pro.fengjian.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+</mapper>
