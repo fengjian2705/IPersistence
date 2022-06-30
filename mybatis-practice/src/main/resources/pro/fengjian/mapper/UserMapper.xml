@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.fengjian.mapper.UserMapper">
+
+    <select id="selectOne" parameterType="pro.fengjian.pojo.User" resultType="pro.fengjian.pojo.User">
+        select *
+        from user
+        where id = #{id}
+          and username = #{username}
+    </select>
+
+    <select id="selectList" parameterType="User" resultType="pro.fengjian.pojo.User">
+        select * from user
+    </select>
+
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <collection property="order_list" ofType="Order">
+            <id property="id" column="oid"/>
+            <result property="total" column="total"/>
+            <result property="order_time" column="order_time"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserWithOrder" resultMap="userMap">
+        select *,o.id oid
+        from user u left join `order` o on u.id = o.uid;
+    </select>
+
+    <resultMap id="userRoleMap" type="User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <collection property="role_list" ofType="Role">
+            <id property="id" column="rid"/>
+            <result property="role_name" column="role_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserWithRole" resultMap="userRoleMap">
+        select u.*,r.*,r.id rid from user u
+        left join user_role ur on u.id =  ur.userid
+        inner join role r on ur.roleid = r.id
+    </select>
+
+</mapper>

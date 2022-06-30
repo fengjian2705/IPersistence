@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"></properties>
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+    <typeAliases>
+        <package name="pro.fengjian.pojo"/>
+    </typeAliases>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${dev.driverClass}"/>
+                <property name="url" value="${dev.jdbcUrl}"/>
+                <property name="username" value="${dev.user}"/>
+                <property name="password" value="${dev.password}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="prod">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${prod.driverClass}"/>
+                <property name="url" value="${prod.jdbcUrl}"/>
+                <property name="username" value="${prod.user}"/>
+                <property name="password" value="${prod.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        <mapper resource="pro/UserMapper.xml"/>-->
+<!--        <mapper class="pro.fengjian.mapper.UserMapper"/>-->
+        <package name="pro.fengjian.mapper"/>
+    </mappers>
+</configuration>
