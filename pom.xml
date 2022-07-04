@@ -11,6 +11,7 @@
         <module>IPersistence-test</module>
         <module>IPersistence-frame</module>
         <module>mybatis-practice</module>
+        <module>mybatisplus-practice</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

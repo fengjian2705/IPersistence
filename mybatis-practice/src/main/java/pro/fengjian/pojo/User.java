@@ -1,8 +1,12 @@
 package pro.fengjian.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
+
+
+    private static final long serialVersionUID = -2736100936541130204L;
 
     private Integer id;
     private String username;
@@ -47,7 +51,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", order_list=" + order_list +
+//                ", order_list=" + order_list +
                 ", role_list=" + role_list +
                 '}';
     }

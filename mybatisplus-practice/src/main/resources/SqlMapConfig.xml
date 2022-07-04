@@ -5,19 +5,22 @@
 <configuration>
     <properties resource="jdbc.properties"></properties>
     <settings>
-        <setting name="cacheEnabled" value="true"/>
+<!--        <setting name="cacheEnabled" value="true"/>-->
         <setting name="logImpl" value="SLF4J"/>
     </settings>
     <typeAliases>
         <package name="pro.fengjian.pojo"/>
     </typeAliases>
     <plugins>
-        <plugin interceptor="pro.fengjian.plugin.ExecutorQueryPlugin" ></plugin>
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-            <property name="dialect" value="mysql"/>
-        </plugin>
-        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
-            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+<!--        <plugin interceptor="pro.fengjian.plugin.ExecutorQueryPlugin" ></plugin>-->
+<!--        <plugin interceptor="com.github.pagehelper.PageHelper">-->
+<!--            <property name="dialect" value="mysql"/>-->
+<!--        </plugin>-->
+<!--        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">-->
+<!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+<!--        </plugin>-->
+        <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+
         </plugin>
     </plugins>
     <environments default="dev">
@@ -43,7 +46,7 @@
     </environments>
     <mappers>
 <!--        <mapper resource="pro/UserMapper.xml"/>-->
-<!--        <mapper class="pro.fengjian.mapper.UserMapper"/>-->
-        <package name="pro.fengjian.mapper"/>
+        <mapper class="pro.fengjian.mapper.UserMapper"/>
+<!--        <package name="pro.fengjian.mapper"/>-->
     </mappers>
 </configuration>
